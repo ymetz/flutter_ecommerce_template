@@ -79,10 +79,7 @@ class _SearchPageState extends State<SearchPage>
     super.dispose();
   }
 
-  void _expand() {
-    _controller.expand();
-  }
-
+  
   Widget _getLowerLayer() {
     return Container(
       margin: const EdgeInsets.only(top: kToolbarHeight),
@@ -114,7 +111,7 @@ class _SearchPageState extends State<SearchPage>
               controller: searchController,
               onChanged: (value) {
                 if(value.isNotEmpty) {
-                  List<Product> tempList = List<Product>();
+                  List<Product> tempList = [];
                   products.forEach((product) {
                     if(product.name.toLowerCase().contains(value)) {
                       tempList.add(product);
@@ -137,7 +134,7 @@ class _SearchPageState extends State<SearchPage>
                   contentPadding: EdgeInsets.zero,
                   border: InputBorder.none,
                   prefixIcon: SvgPicture.asset('assets/icons/search_icon.svg', fit: BoxFit.scaleDown,),
-                  suffix: FlatButton(
+                  suffix: TextButton(
                       onPressed: () {
                         searchController.clear();
                         searchResults.clear();
